@@ -13,6 +13,9 @@ public class VServer implements Runnable{
         Thread thread = new Thread(vServer);
         thread.start();
 
+        //do something
+        thread.interrupt();
+
     }
 
     public VServer(VStream[] vStreams, Storage storage) {
