@@ -4,12 +4,12 @@
  * Date: 31.10.13
  * Time: 12:22
  */
-public class VServer implements Runnable{
+public class VServer implements Runnable {
     private VStream[] streams;
     private Storage storage;
 
     public static void main(String[] args) {
-        VServer vServer = new VServer(VStream[], Storage);
+        VServer vServer = new VServer(VStream[],Storage);
         Thread thread = new Thread(vServer);
         thread.start();
 
@@ -25,20 +25,20 @@ public class VServer implements Runnable{
 
     public void run() {
         while (!Thread.currentThread().isInterrupted()) {
-            for (int i=0; i < streams.length; i++) {
+            for (int i = 0; i < streams.length; i++) {
                 String receivedData = this.read(streams[i]);
-                if (receivedData==null) continue;
+                if (receivedData == null) continue;
                 this.save(storage, receivedData);
             }
         }
     }
 
 
+    private synchronized String read(VStream stream) {
 
-    private synchronized String read(VStream stream)
-    {
+
         String receivedData = stream.read();
-        if(receivedData!=null) stream.confirm();
+        if (receivedData != null) stream.confirm();
         return receivedData;
     }
 
