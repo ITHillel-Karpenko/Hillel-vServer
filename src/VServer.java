@@ -33,6 +33,7 @@ public class VServer implements Runnable{
         }
     }
 
+
     private synchronized String read(VStream stream)
     {
         String receivedData = stream.read();
