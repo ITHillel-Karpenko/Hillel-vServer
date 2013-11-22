@@ -9,8 +9,9 @@ public class VServer implements Runnable {
     private Storage storage;
 
     public static void main(String[] args) {
-        VServer vServer = new VServer(VStream[],Storage);
+        VServer vServer = new VServer(VStream[], Storage);
         Thread thread = new Thread(vServer);
+        //aerhaerhaerhaerhbaerh
         thread.start();
 
         //do something
@@ -24,6 +25,7 @@ public class VServer implements Runnable {
     }
 
     public void run() {
+        System.out.println("sdg");
         while (!Thread.currentThread().isInterrupted()) {
             for (int i = 0; i < streams.length; i++) {
                 String receivedData = this.read(streams[i]);
@@ -35,6 +37,7 @@ public class VServer implements Runnable {
 
 
     private synchronized String read(VStream stream) {
+
 
 
         String receivedData = stream.read();
